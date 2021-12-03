@@ -1,0 +1,27 @@
+<!-- <button (click)="close()">close</button>
+<h1>total: {{total}}</h1> -->
+<div class="">
+    <!-- <div class="py-4 d-flex justify-content-end">
+        <h6><a href="#">Cancel and return to website</a></h6>
+    </div> -->
+    <div class="bg-light rounded d-flex flex-column">
+        <div class="p-2 ml-3">
+            <h4>Order Recap</h4>
+        </div>
+        <div class="p-2 d-flex" *ngFor="let item of data">
+            <div class="col-8">{{item.title}} x {{item.buy}}</div>
+            <div class="ml-auto">${{item.price}}</div>
+        </div>
+        <div class="border-top px-4 mx-3"> </div>
+        <div class="p-2 d-flex pt-3">
+            <div class="col-8">Shiping</div>
+            <div class="ml-auto">$00.00</div>
+        </div>
+        <div class="border-top px-4 mx-3"></div>
+        <div class="p-2 d-flex pt-3">
+            <div class="col-8"><b>Total</b></div>
+            <div class="ml-auto"><b class="green">${{total}}</b></div>
+        </div>
+        <button class="btn btn-success" *ngIf="show" (click)="close()">Checkout</button>
+    </div>
+</div>

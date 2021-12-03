@@ -1,0 +1,35 @@
+<div class="d-flex  justify-content-center">
+
+    <button type="button" class="btn btn-primary mr-2" (click)="openModal()">Add</button>
+    <a type="button" [routerLink]="['/admin/carts']"  class="btn btn-primary ml-2">Cart</a>
+
+</div>
+
+<!-- <div *ngIf="data$ | async as data$; else loading"> -->
+<div *ngIf="data">
+    <div class="container-fluid ">
+        <div class="row justify-content-center">
+            <div class="col-xl-2 col-md-4 col-sm-6 m-1" *ngFor="let item of data |async">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <div (click)="viewDetail(item)">
+                            <img class="card-img-top" src='{{item.img}}' alt="Card image cap">
+                            <h5 class="card-title">{{item.title}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">price:{{item.price}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">in stock:{{item.quanlity}}</h6>
+                            <!-- <h6 class="card-subtitle mb-2 text-muted"></h6> -->
+                            <p class="card-text">{{item.description}}</p>
+                        </div>
+
+
+                        <button type="button" class="mr-1 btn btn-success"
+                            (click)="openUpdateModal(item)">Update</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(item.id)">Delete</button>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

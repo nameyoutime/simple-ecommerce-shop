@@ -1,0 +1,32 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-3">
+
+    <div class="form-group">
+        <fieldset>
+            <label>Title</label>
+            <input class="form-control" placeholder="Enter title" type="text" formControlName="title">
+        </fieldset>
+        <fieldset>
+            <label>Description</label>
+            <input class="form-control" placeholder="Enter description" type="text" formControlName="description">
+        </fieldset>
+        <fieldset>
+            <label>Price</label>
+
+            <input class="form-control" placeholder="Enter price" type="number" formControlName="price">
+        </fieldset>
+        <fieldset>
+            <label>Quanlity</label>
+
+            <input class="form-control" placeholder="Enter quanlity" type="number" formControlName="quanlity">
+        </fieldset>
+        <fieldset>
+            <label>Img</label>
+
+            <input (change)="onFileChange($event)" type="file" accept=".jpg,.jpeg,.png" class="form-control"
+            id="customFile" >
+        </fieldset>
+        <!-- <label class="form-label" for="customFile">Default file input example</label> -->
+        <button #submit type="submit" class="mt-2 btn btn-primary">Add</button>
+    </div>
+</form>

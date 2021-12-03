@@ -1,0 +1,22 @@
+<div *ngIf="this.authSer.auth.user | async as user; else showLogin">
+    <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="this.authSer.admin==true">
+            <a class="nav-link active" [routerLink]="['/admin']">Dashboard</a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link">Hello {{ user.displayName }}!</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" type="button" (click)="logout()">Logout</a>
+        </li>
+
+    </ul>
+</div>
+<ng-template #showLogin>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link active" type="button" (click)="login()">Login</a>
+        </li>
+    </ul>
+</ng-template>
