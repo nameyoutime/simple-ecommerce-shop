@@ -14,13 +14,9 @@
             <td>{{item.title}}</td>
             <td>{{item.price}}</td>
             <td>
-                <button (click)="minus(i)" class="btn btn-danger mr-3">
-                    -
-                </button>
+                <button (click)="minus(i)" class="btn btn-danger mr-3">-</button>
                 {{item.buy}}
-                <button class="btn btn-success ml-3" (click)="plush(i)">
-                    +
-                </button>
+                <button class="btn btn-success ml-3" (click)="plush(i)">+</button>
             </td>
             <td>
                 <button (click)="delete(i)" class="btn btn-danger">delete</button>
@@ -28,6 +24,6 @@
         </tr>
     </tbody>
 </table>
-<div class="d-flex justify-content-center" >
+<div class="d-flex justify-content-center">
     <button class="btn btn-primary" (click)="viewCheckOut()">check out</button>
 </div>

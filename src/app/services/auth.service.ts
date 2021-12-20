@@ -13,6 +13,7 @@ export class AuthService {
   public admin: boolean;
   constructor(private router: Router, public auth: AngularFireAuth, private fire: AngularFirestore) {
     this.getUser();
+    this.checkIfNull();
     this.admin = false;
   }
 
@@ -22,10 +23,25 @@ export class AuthService {
       return this.user = null;
     } else {
       this.user = JSON.parse(user)
-      this.isAdmin(this.user.uid).subscribe((data:any)=>{
+      this.isAdmin(this.user.uid).subscribe((data: any) => {
         this.admin = data.data().isAdmin;
       })
       return this.user;
+    }
+  }
+
+  checkIfNull() {
+    let user: any = localStorage.getItem('user');
+    let userid: any = localStorage.getItem('userId');
+    let cart: any = localStorage.getItem('cart');
+    if (!user) {
+      localStorage.setItem('user', JSON.stringify(null));
+    }
+    if (!userid) {
+      localStorage.setItem('userId', JSON.stringify(null));
+    }
+    if (!cart) {
+      localStorage.setItem('cart', JSON.stringify([]));
     }
   }
 
@@ -46,7 +62,7 @@ export class AuthService {
     })
   }
 
-  isAdmin(uid:any) {
+  isAdmin(uid: any) {
     let querry = this.fire.collection("users").doc(uid).get();
     return querry;
   }
@@ -56,7 +72,7 @@ export class AuthService {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((data: any) => {
       this.checkExists(data.user);
       localStorage.setItem('user', JSON.stringify(data.user));
-      this.isAdmin(data.user.uid).subscribe((data:any)=>{
+      this.isAdmin(data.user.uid).subscribe((data: any) => {
         this.admin = data.data().isAdmin;
       })
     });
