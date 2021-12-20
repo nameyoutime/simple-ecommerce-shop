@@ -12,8 +12,8 @@ export class AuthService {
   public user: any;
   public admin: boolean;
   constructor(private router: Router, public auth: AngularFireAuth, private fire: AngularFirestore) {
-    this.getUser();
     this.checkIfNull();
+    this.getUser();
     this.admin = false;
   }
 
